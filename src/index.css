@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: rgb(0, 248, 185);
+  --primary-hover: rgb(0, 218, 165);
+  --background-start: rgba(40, 39, 52, 0.95);
+  --background-end: rgba(14, 14, 20, 0.95);
+}
+
+html, body {
+  @apply h-full;
+}
+
+body {
+  @apply antialiased text-white m-0 p-0;
+  background: radial-gradient(158.02% 50% at 50% 50%, var(--background-start) 0%, var(--background-end) 100%);
+  min-height: 100vh;
+}
+
+#root {
+  @apply h-full;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  }
+  
+  .btn-primary {
+    @apply btn bg-[rgb(0,248,185)] border-[rgb(0,248,185)] text-black hover:bg-[rgb(0,218,165)] hover:border-[rgb(0,218,165)] focus:ring-[rgb(0,248,185)];
+  }
+  
+  .btn-secondary {
+    @apply btn bg-transparent border border-[rgb(0,248,185)] text-[rgb(0,248,185)] hover:bg-[rgba(0,248,185,0.1)] focus:ring-[rgb(0,248,185)];
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-600 border-red-600 text-white hover:bg-red-700 hover:border-red-700 focus:ring-red-600;
+  }
+  
+  .card {
+    @apply bg-gray-800/70 rounded-lg p-4 backdrop-blur-sm border border-gray-700/50;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 bg-gray-900/80 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgb(0,248,185)] focus:border-transparent;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-gray-300 mb-1;
+  }
+  
+  .badge {
+    @apply px-2 py-1 text-xs font-semibold rounded-full;
+  }
+  
+  .badge-success {
+    @apply bg-green-900/70 text-green-300 border border-green-700/50;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-900/70 text-yellow-300 border border-yellow-700/50;
+  }
+  
+  .badge-danger {
+    @apply bg-red-900/70 text-red-300 border border-red-700/50;
+  }
+  
+  .badge-info {
+    @apply bg-blue-900/70 text-blue-300 border border-blue-700/50;
+  }
+}
+
+/* Receipt styling */
+.receipt {
+  @apply font-mono text-sm bg-white text-black p-4 rounded;
+  line-height: 1.5;
+}
+
+/* Animation for logo */
+@keyframes pulse-glow {
+  0%, 10% {
+    filter: drop-shadow(0 0 4px rgba(0, 248, 185, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(0, 248, 185, 0.8));
+  }
+}
+
+.logo-animate {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Flicker effect animations */
+@keyframes flicker-on {
+  0%   { opacity: 0; filter: brightness(0.2); }
+  10%  { opacity: 1; filter: brightness(1.2); }
+  20%  { opacity: 0.3; filter: brightness(0.6); }
+  30%  { opacity: 1; filter: brightness(1.4); }
+  40%  { opacity: 0.5; filter: brightness(0.5); }
+  50%  { opacity: 1; filter: brightness(1.2); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+.flicker-blarneys {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  opacity: 0;
+  animation: flicker-on 2.5s ease-in-out forwards;
+}
+
+.flicker-sportsbook {
+  --tw-text-opacity: 1;
+  color: rgb(0 248 185 / var(--tw-text-opacity));
+  opacity: 0;
+  animation: flicker-on 2.5s ease-in-out forwards;
+  animation-delay: 2.1s;
+}
+
+.flicker-blarneys,
+.flicker-sportsbook {
+  text-shadow: 0 0 0px currentColor, 0 0 5px currentColor, 0 0 20px currentColor;
+}
+
+/* Transitions */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
